@@ -1,8 +1,8 @@
 package com.example.ptmedia.controller;
 
+import com.example.ptmedia.model.Comment;
 import com.example.ptmedia.model.Post;
-import com.example.ptmedia.model.Rate;
-import com.example.ptmedia.service.RateService;
+import com.example.ptmedia.service.CommentService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,13 +11,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/rate")
+@RequestMapping("/comment")
 @AllArgsConstructor
-public class RateController {
-    private final RateService rateService;
-
+public class CommentController {
+    private final CommentService commentService;
     @PostMapping("/add")
-    public ResponseEntity<Rate> postRegister(@RequestBody Rate rate) {
-        return ResponseEntity.ok(rateService.Register(rate));
+     public ResponseEntity<Comment> postRegister(@RequestBody Comment comment) {
+        return ResponseEntity.ok(commentService.Register(comment));
     }
 }

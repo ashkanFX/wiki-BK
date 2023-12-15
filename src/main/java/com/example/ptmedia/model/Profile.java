@@ -1,5 +1,6 @@
 package com.example.ptmedia.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -9,8 +10,8 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-@Table(name = "user")
-public class User {
+@Table(name = "Profile")
+public class Profile {
     @Id
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,12 +19,9 @@ public class User {
     @Column
     private String name;
     @Column
-    private String password;
-    @Column
     private String mobile;
-    @OneToMany
-    @JoinColumn(name = "p_id")
+    @OneToMany(mappedBy = "profile", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<Post> post;
-//    private fileLocation img
 
 }
