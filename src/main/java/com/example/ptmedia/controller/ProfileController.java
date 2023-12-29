@@ -6,6 +6,7 @@ import com.example.ptmedia.controller.dto.ProfileRegisterUpdateDto;
 import com.example.ptmedia.model.Profile;
 import com.example.ptmedia.service.ProfileService;
 import com.example.ptmedia.service.dto.ProfileDto;
+import com.example.ptmedia.service.dto.ProfilePostDTO;
 import com.example.ptmedia.util.DtoMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -36,13 +37,27 @@ public class ProfileController {
     public ResponseEntity<List<Profile>> getAll() {
         return ResponseEntity.ok(profileService.getAllProfile());
     }
+
     @PostMapping("/delete")
     public ResponseEntity<Boolean> ProfileDelete(@RequestBody ProfileGetDto profile) {
         return ResponseEntity.ok(profileService.deleteProfile(profile.getId()));
     }
+
     @PostMapping("/update")
     public ResponseEntity<Boolean> ProfileUpdate(@RequestBody ProfileRegisterUpdateDto profile) {
         return ResponseEntity.ok(profileService.updateProfile(profile));
+    }
+
+    @PostMapping("/test")
+    public ResponseEntity<List<String>> ProfileUpdate() {
+        return ResponseEntity.ok(profileService.getName());
+    }
+
+
+    @PostMapping("/test1")
+    public ResponseEntity<List<ProfilePostDTO>> result() {
+        return ResponseEntity.ok(profileService.selectPostProfile());
+
     }
 
 }

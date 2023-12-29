@@ -1,7 +1,6 @@
 package com.example.ptmedia.controller;
 
 import com.example.ptmedia.model.Comment;
-import com.example.ptmedia.model.Post;
 import com.example.ptmedia.service.CommentService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;

@@ -12,15 +12,12 @@ public class Rate {
     @Column
     private Long id;
     private int value;
-
     @ManyToOne
     @JoinColumn(name = "u_id")
     @JsonBackReference
     private Profile profile;
-
     @ManyToOne
     @JoinColumn(name = "p_id")
     private Post post;
-
 
 }

@@ -8,6 +8,7 @@ import com.example.ptmedia.exception.alreadyExsitException;
 import com.example.ptmedia.model.Profile;
 import com.example.ptmedia.repository.ProfileRepository;
 import com.example.ptmedia.service.dto.ProfileDto;
+import com.example.ptmedia.service.dto.ProfilePostDTO;
 import com.example.ptmedia.util.DtoMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -54,5 +55,11 @@ public class ProfileService {
 
     public List<Profile> getAllProfile() {
         return this.profileRepository.findAll();
+    }
+    public List<String> getName(){
+        return this.profileRepository.GetProfileName();
+    }
+    public  List<ProfilePostDTO>  selectPostProfile() {
+        return this.profileRepository.getPostDetails();
     }
 }

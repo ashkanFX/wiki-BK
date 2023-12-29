@@ -5,18 +5,16 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "comment")
-public class Comment {
+@Table(name = "document")
+public class Document {
     @Id
     @Column
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
-    String description;
+    @Column
+    @Lob
+    private byte[] Content;
     @ManyToOne
-    @JoinColumn(name = "u_id")
-    private Profile profile;
-    @ManyToOne
-    @JoinColumn(name = "p_id")
+    @JoinColumn(name = "post_id", referencedColumnName = "id")
     private Post post;
-
 }
