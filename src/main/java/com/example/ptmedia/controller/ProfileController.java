@@ -57,7 +57,6 @@ public class ProfileController {
     @PostMapping("/test1")
     public ResponseEntity<List<ProfilePostDTO>> result() {
         return ResponseEntity.ok(profileService.selectPostProfile());
-
     }
 
 }

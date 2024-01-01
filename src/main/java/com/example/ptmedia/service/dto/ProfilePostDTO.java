@@ -10,15 +10,14 @@ public class ProfilePostDTO {
     private String description;
     private String title;
 
-    private int value;
 
-    public ProfilePostDTO(String mobile, String name, Long postId, String description, String title ,int value) {
+    public ProfilePostDTO(String mobile, String name, Long postId, String description, String title ) {
         this.mobile = mobile;
         this.name = name;
         this.postId = postId;
         this.description = description;
         this.title = title;
-        this.value= value;
+
     }
 
 }

@@ -2,6 +2,7 @@ package com.example.ptmedia.controller;
 
 import com.example.ptmedia.model.Post;
 import com.example.ptmedia.service.PostService;
+import com.example.ptmedia.service.dto.PostRequestDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,8 +16,8 @@ public class PostController {
     private final PostService postService;
 
     @PostMapping("/add")
-    public ResponseEntity<Post> postRegister(@RequestBody Post post) {
-        return ResponseEntity.ok(postService.Register(post));
+    public ResponseEntity<Post> postRegister(@RequestBody PostRequestDTO postRequestDTO) {
+        return ResponseEntity.ok(postService.Register(postRequestDTO));
     }
 
     @PostMapping("/delete")

@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @Entity
@@ -23,6 +25,11 @@ public class Post {
     @JoinColumn(name = "profile_id", referencedColumnName = "id")
     private Profile profile;
 
-
-
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(
+            name = "post_category",
+            joinColumns = @JoinColumn(name = "post_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id")
+    )
+    private Set<Category> categories = new HashSet<>();
 }

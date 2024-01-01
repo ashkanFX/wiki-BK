@@ -16,10 +16,9 @@ public interface ProfileRepository extends JpaRepository<Profile, Long> {
     List<String> GetProfileName();
     @Query("SELECT P FROM Profile P WHERE P.name = :name ")
     Profile FindByName(@Param("name") String name);
-    @Query("SELECT NEW com.example.ptmedia.service.dto.ProfilePostDTO(p.profile.mobile, p.profile.name, p.id, p.description, p.title , r.value)" +
+    @Query("SELECT NEW com.example.ptmedia.service.dto.ProfilePostDTO(p.profile.mobile, p.profile.name, p.id, p.description, p.title )" +
             "FROM Post p " +
-            "JOIN Profile p2 ON p.id = p2.id " +
-            "JOIN Rate r ON r.id = p.id")
+            "JOIN Profile p2 ON p.id = p2.id " )
     List<ProfilePostDTO> getPostDetails();
 
 }
