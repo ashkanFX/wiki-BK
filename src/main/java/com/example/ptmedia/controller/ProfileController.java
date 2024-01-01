@@ -29,10 +29,10 @@ public class ProfileController {
 
         return ResponseEntity.ok(profileService.Register(profileRegisterRequestDto));
     }
-    @PostMapping("/get")
-    public ResponseEntity<Profile> ProfileGet(@RequestBody ProfileGetDto ProfileGetDto) {
-        return ResponseEntity.ok(profileService.getProfile(ProfileGetDto));
-    }
+//    @PostMapping("/get")
+//    public ResponseEntity<Profile> ProfileGet(@RequestBody ProfileGetDto ProfileGetDto) {
+//        return ResponseEntity.ok(profileService.getProfile(ProfileGetDto));
+//    }
     @PostMapping("/getAll")
     public ResponseEntity<List<Profile>> getAll() {
         return ResponseEntity.ok(profileService.getAllProfile());

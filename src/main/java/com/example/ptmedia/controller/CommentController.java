@@ -14,8 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 @AllArgsConstructor
 public class CommentController {
     private final CommentService commentService;
+
     @PostMapping("/add")
-     public ResponseEntity<Comment> postRegister(@RequestBody Comment comment) {
+    public ResponseEntity<Comment> postRegister(@RequestBody Comment comment) {
         return ResponseEntity.ok(commentService.Register(comment));
     }
 }

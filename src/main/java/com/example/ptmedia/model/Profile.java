@@ -1,14 +1,14 @@
 package com.example.ptmedia.model;
-
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+import java.time.LocalDateTime;
 
-@Getter
-@Setter
+@Data
 @Entity
 @Table(name = "Profile")
-public class  Profile {
+public class Profile {
     @Id
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,6 +17,10 @@ public class  Profile {
     private String name;
     @Column
     private String mobile;
-
-
+    @Column(updatable = false)
+    @CreationTimestamp
+    private LocalDateTime creat_Date;
+    @Column
+    @UpdateTimestamp
+    private LocalDateTime update_Date;
 }

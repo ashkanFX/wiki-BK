@@ -1,9 +1,11 @@
 package com.example.ptmedia.exception;
 
-import org.springframework.http.HttpStatus;
+import lombok.Data;
 
-public class NotFoundException extends ptException{
-    public NotFoundException() {
-        super(HttpStatus.BAD_REQUEST, 102);
+@Data
+public class NotFoundException extends RuntimeException {
+
+    public NotFoundException(String message) {
+        super(message);
     }
 }

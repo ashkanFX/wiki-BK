@@ -12,10 +12,7 @@ import java.util.List;
 public class PostRequestDTO {
     private String title;
     private String description;
-
     private Profile profile;
     private List<Long> categoryIds;
-
-    // Getters and setters
 }
 
