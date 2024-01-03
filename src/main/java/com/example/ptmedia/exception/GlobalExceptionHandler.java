@@ -20,8 +20,8 @@ public class GlobalExceptionHandler {
     }
 
 
-    @ExceptionHandler(ValidationٍException.class)
-    public ResponseEntity<?> handleValidationٍException (ValidationٍException e) {
+    @ExceptionHandler(ValidationException.class)
+    public ResponseEntity<?> handleValidationٍException (ValidationException e) {
         CustomErrorResponse customErrorResponse = new CustomErrorResponse(e.getMessage(), 400);
         return ResponseEntity.badRequest().body(customErrorResponse);
     }
