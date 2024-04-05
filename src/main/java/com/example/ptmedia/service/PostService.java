@@ -16,7 +16,7 @@ import java.util.List;
 @Slf4j
 @AllArgsConstructor
 public class PostService {
-    private final PostRepository postRepository;
+        private final PostRepository postRepository;
     private final CategoryRepository categoryRepository;
 
     public Post Register(PostRequestDTO postRequestDTO) {

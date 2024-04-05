@@ -6,6 +6,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Data
@@ -24,11 +25,26 @@ public class Post {
     @JoinColumn(name = "profile_id", referencedColumnName = "id")
     private Profile profile;
     @ManyToMany(cascade = CascadeType.PERSIST)
-    @JoinTable(
-            name = "post_category",
-            joinColumns = @JoinColumn(name = "post_id"),
-            inverseJoinColumns = @JoinColumn(name = "category_id"))
+    @JoinTable(name = "post_category", joinColumns = @JoinColumn(name = "post_id"), inverseJoinColumns = @JoinColumn(name = "category_id"))
     private Set<Category> categories = new HashSet<>();
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Post post)) return false;
+        return getId() == post.getId() && Objects.equals(getTitle(), post.getTitle()) && Objects.equals(getDescription(), post.getDescription()) && Objects.equals(getProfile(), post.getProfile()) && Objects.equals(getCategories(), post.getCategories()) && Objects.equals(getUpdateAt(), post.getUpdateAt()) && Objects.equals(getCreatAt(), post.getCreatAt());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId(), getTitle(), getDescription(), getProfile(), getCategories(), getUpdateAt(), getCreatAt());
+    }
+
+    @Override
+    public String toString() {
+        return "Post{" + "id=" + id + ", title='" + title + '\'' + ", description='" + description + '\'' + ", profile=" + profile + ", categories=" + categories + ", updateAt=" + updateAt + ", creatAt=" + creatAt + '}';
+    }
+
     @CreationTimestamp
     private LocalDateTime updateAt;
     @UpdateTimestamp

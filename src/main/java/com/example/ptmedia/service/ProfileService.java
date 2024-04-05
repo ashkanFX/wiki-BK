@@ -58,6 +58,10 @@ public class ProfileService {
 
     public boolean updateProfile(Profile profile) {
         if (profileRepository.existsById(profile.getId())) {
+            if (!profile.equals(profileRepository.findById(profile.getId()).orElse(null))) {
+
+                throw new ValidationException(" no change detected :( ");
+            }
             Profile profile1 = profileRepository.findById(profile.getId()).orElseThrow();
             if (profile.getMobile().length() != 11) {
                 throw new ValidationException("phone number is not equal 11 character ");
@@ -73,22 +77,5 @@ public class ProfileService {
         }
         throw new NotFoundException("user is not exsit");
     }
-
-//    public Profile getProfile(ProfileGetDto ProfileGetDto)  {
-//        return this.profileRepository.findById(ProfileGetDto.getId()).orElseThrow(NotFoundException::new);
-//         this.dtoMapper.profileDto(getProfile);
-//        profile getProfile = this.profileRepository.findById(ProfileGetDto.getId()).orElseThrow(NotFoundException::new);
-//        return this.dtoMapper.profileDto(getProfile);
-//    }
-
-
-    //    public List<Profile> getAllProfile() {
-//        return this.profileRepository.findAll();
-//    }
-//    public List<String> getName(){
-//        return this.profileRepository.GetProfileName();
-//    }
-//    public List<PostView> selectPostProfile() {
-//        return profileRepository.FindByName();
-//    }
+    
 }
