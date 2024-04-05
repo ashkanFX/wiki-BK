@@ -1,4 +1,5 @@
 package com.example.ptmedia.controller;
+
 import com.example.ptmedia.model.Rate;
 import com.example.ptmedia.service.RateService;
 import lombok.AllArgsConstructor;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @AllArgsConstructor
 public class RateController {
     private final RateService rateService;
+
     @PostMapping("/add")
     public ResponseEntity<Rate> postRegister(@RequestBody Rate rate) {
         return ResponseEntity.ok(rateService.Register(rate));

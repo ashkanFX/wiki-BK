@@ -77,5 +77,14 @@ public class ProfileService {
         }
         throw new NotFoundException("user is not exsit");
     }
-    
+
+    public boolean deleteAll() {
+        try {
+            profileRepository.deleteAll();
+            return true;
+        } catch (Exception exception) {
+            return false;
+        }
+    }
+
 }

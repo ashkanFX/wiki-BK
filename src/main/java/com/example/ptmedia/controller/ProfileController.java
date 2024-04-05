@@ -3,7 +3,6 @@ package com.example.ptmedia.controller;
 import com.example.ptmedia.controller.dto.ProfileRegisterRequestDto;
 import com.example.ptmedia.model.Profile;
 import com.example.ptmedia.service.ProfileService;
-import com.example.ptmedia.service.dto.PostView;
 import com.example.ptmedia.service.dto.ProfileDto;
 import com.example.ptmedia.util.DtoMapper;
 import lombok.RequiredArgsConstructor;
@@ -34,7 +33,6 @@ public class ProfileController {
     public ResponseEntity<List<Profile>> getAll() {
         return ResponseEntity.ok(profileService.getAllProfile());
     }
-
     @PostMapping("/delete")
     public ResponseEntity<String> ProfileDelete(@RequestParam("id") Long id) {
         if (profileService.deleteProfile(id)) {
@@ -47,6 +45,11 @@ public class ProfileController {
     @PostMapping("/update")
     public ResponseEntity<Boolean> ProfileUpdate(@RequestBody Profile profile) {
         return ResponseEntity.ok(profileService.updateProfile(profile));
+    }
+
+    @PostMapping("/deleteAll")
+    public ResponseEntity<Boolean> deleteAll() {
+        return ResponseEntity.ok(profileService.deleteAll());
     }
 //
 //    @PostMapping("/test")

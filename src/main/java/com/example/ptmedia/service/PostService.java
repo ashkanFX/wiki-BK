@@ -26,10 +26,8 @@ public class PostService {
         post.setProfile(postRequestDTO.getProfile());
         post.setDescription(postRequestDTO.getDescription());
 
-
         List<Category> categories = categoryRepository.findAllById(postRequestDTO.getCategoryIds());
         post.setCategories(new HashSet<>(categories));
-
         postRepository.save(post);
         return postRepository.save(post);
     }
