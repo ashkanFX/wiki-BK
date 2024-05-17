@@ -19,6 +19,8 @@ public interface ProfileRepository extends JpaRepository<Profile, Long> {
 //    List<PostView> getPostDetails();
 
     Boolean existsByMobile(String mobile);
+
+    Profile getById(Long id);
 //
 //    Boolean existsById(long id);
 //

@@ -1,14 +1,26 @@
 package com.example.ptmedia.service.dto;
 
-import com.example.ptmedia.model.Profile;
-import jakarta.persistence.Column;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import lombok.Getter;
+import lombok.Setter;
 
-import java.time.LocalDateTime;
+import java.util.List;
 
+@Setter
+@Getter
 public class PostDto {
     private String title;
     private String description;
-    private Profile profile;
+    private ProfileDto profileDto;
+    private List<String> categories;
+
+
+    @Override
+    public String toString() {
+        return "PostDto{" +
+                "title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", profile=" + profileDto +
+                ", categories=" + categories +
+                '}';
+    }
 }

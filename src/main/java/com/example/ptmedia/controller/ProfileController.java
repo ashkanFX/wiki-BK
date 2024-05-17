@@ -14,13 +14,13 @@ import java.util.List;
 @RestController
 @RequestMapping("/profile")
 @RequiredArgsConstructor
+@CrossOrigin
 public class ProfileController {
     private final ProfileService profileService;
     private final DtoMapper dtoMapper;
 
     @PostMapping("/add")
     public ResponseEntity<ProfileDto> ProfileRegister(@RequestBody ProfileRegisterRequestDto profileRegisterRequestDto) {
-
         return ResponseEntity.ok(profileService.Register(profileRegisterRequestDto));
     }
 
@@ -51,16 +51,6 @@ public class ProfileController {
     public ResponseEntity<Boolean> deleteAll() {
         return ResponseEntity.ok(profileService.deleteAll());
     }
-//
-//    @PostMapping("/test")
-//    public ResponseEntity<List<PostView>> ProfileUpdate() {
-//        return ResponseEntity.ok(profileService.selectPostProfile());
-//    }
 
-//
-//    @PostMapping("/test1")
-//    public ResponseEntity<List<PostView>> result() {
-//        return ResponseEntity.ok(profileService.selectPostProfile());
-//    }
 
 }

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/document")
@@ -37,4 +38,8 @@ public class DocumentController {
         return "oke bod";
     }
 
+    @PostMapping("/get")
+    public Optional<Document> handelGetFile(@RequestParam("id") Long id) {
+      return   documentService.findById(id);
+    }
 }

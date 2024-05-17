@@ -14,7 +14,7 @@ public class Document {
     @Column
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
-    @Column(length = 9000) // Adjust the length accordingly
+    @Column(length = 90000) // Adjust the length accordingly
     @Lob
     private byte[] Content;
     @ManyToOne

@@ -1,7 +1,6 @@
 package com.example.ptmedia.service.dto;
 
 
-import com.example.ptmedia.model.Profile;
 import lombok.Builder;
 import lombok.Data;
 
@@ -12,7 +11,7 @@ import java.util.List;
 public class PostRequestDTO {
     private String title;
     private String description;
-    private Profile profile;
+    private Long profileId;
     private List<Long> categoryIds;
 }
 
