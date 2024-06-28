@@ -18,6 +18,10 @@ public class Category {
     @Column
     String name;
 
+    @ManyToMany(mappedBy = "categories")
+
+    private Set<Post> posts = new HashSet<>();
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -38,6 +42,4 @@ public class Category {
                 '}';
     }
 
-    @ManyToMany(mappedBy = "categories")
-    private Set<Post> posts = new HashSet<>();
 }

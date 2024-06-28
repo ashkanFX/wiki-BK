@@ -1,26 +1,36 @@
 package com.example.ptmedia.controller;
 
+import com.example.ptmedia.controller.dto.Category.CategoryRequestDto;
+import com.example.ptmedia.controller.dto.Category.CategoryResponseDto;
 import com.example.ptmedia.model.Category;
 import com.example.ptmedia.service.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin()
 @RestController
 @RequestMapping("/category")
-@CrossOrigin
 @RequiredArgsConstructor
+
 public class CategoryController {
     private final CategoryService categoryService;
 
-    @PostMapping("/getAll")
-    public ResponseEntity<List<Category>> postDelete() {
-        return ResponseEntity.ok(categoryService.getAll());
+    @PostMapping("/add")
+    public ResponseEntity<Category> addCategory(@RequestBody CategoryRequestDto categoryRequestDto) {
+        return ResponseEntity.ok(categoryService.addCategory(categoryRequestDto));
+    }
+
+    @GetMapping("/getAll")
+    public ResponseEntity<List<CategoryResponseDto>> addAllCategory() {
+        return ResponseEntity.ok(categoryService.findAll());
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Boolean> deleteCategory(@PathVariable Long id) {
+        return ResponseEntity.ok(categoryService.deleteCategory(id));
     }
 
 

@@ -6,6 +6,8 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Data
@@ -18,18 +20,25 @@ public class Profile {
     private Long id;
     @Column
     private String name;
-    @Column
+    @Column()
     private String mobile;
+
+    @OneToMany(mappedBy = "profile", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Post> posts = new ArrayList<>();
+
+    @OneToMany(mappedBy = "profile", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Rate> rates = new ArrayList<>();
+
+    @Column(updatable = false)
+    @CreationTimestamp
+    private LocalDateTime creat_Date;
+    @Column()
+    @UpdateTimestamp
+    private LocalDateTime update_Date;
 
     @Override
     public String toString() {
-        return "Profile{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", mobile='" + mobile + '\'' +
-                ", creat_Date=" + creat_Date +
-                ", update_Date=" + update_Date +
-                '}';
+        return "Profile{" + "id=" + id + ", name='" + name + '\'' + ", mobile='" + mobile + '\'' + ", creat_Date=" + creat_Date + ", update_Date=" + update_Date + '}';
     }
 
     @Override
@@ -44,10 +53,5 @@ public class Profile {
         return Objects.hash(getId(), getName(), getMobile(), getCreat_Date(), getUpdate_Date());
     }
 
-    @Column(updatable = false)
-    @CreationTimestamp
-    private LocalDateTime creat_Date;
-    @Column
-    @UpdateTimestamp
-    private LocalDateTime update_Date;
+
 }

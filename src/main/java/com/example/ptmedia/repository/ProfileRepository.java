@@ -18,9 +18,9 @@ public interface ProfileRepository extends JpaRepository<Profile, Long> {
 //            "JOIN Profile p2 ON p.id = p2.id ")
 //    List<PostView> getPostDetails();
 
-    Boolean existsByMobile(String mobile);
-
-    Profile getById(Long id);
+//    Boolean existsByMobile(String mobile);
+//
+//    Profile getById(Long id);
 //
 //    Boolean existsById(long id);
 //

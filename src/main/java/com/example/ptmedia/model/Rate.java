@@ -1,5 +1,6 @@
 package com.example.ptmedia.model;
-import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -15,13 +16,13 @@ public class Rate {
     private Long id;
     private int value;
     @ManyToOne
-    @JoinColumn(name = "u_id")
-    @JsonBackReference
+    @JoinColumn(name = "profile_id")
+    @JsonIgnore
     private Profile profile;
     @ManyToOne
-    @JoinColumn(name = "p_id")
+    @JoinColumn(name = "post_id")
+    @JsonIgnore
     private Post post;
-
     @Override
     public String toString() {
         return "Rate{" +
@@ -31,14 +32,12 @@ public class Rate {
                 ", post=" + post +
                 '}';
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Rate rate)) return false;
         return getValue() == rate.getValue() && getId().equals(rate.getId()) && getProfile().equals(rate.getProfile()) && getPost().equals(rate.getPost());
     }
-
     @Override
     public int hashCode() {
         return Objects.hash(getId(), getValue(), getProfile(), getPost());

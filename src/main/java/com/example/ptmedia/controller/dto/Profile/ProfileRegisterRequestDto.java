@@ -1,4 +1,4 @@
-package com.example.ptmedia.controller.dto;
+package com.example.ptmedia.controller.dto.Profile;
 
 import lombok.Data;
 

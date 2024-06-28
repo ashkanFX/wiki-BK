@@ -1,4 +1,4 @@
-package com.example.ptmedia.service.dto;
+package com.example.ptmedia.controller.dto.Post;
 
 
 import lombok.Builder;
@@ -8,10 +8,10 @@ import java.util.List;
 
 @Data
 @Builder
-public class PostRequestDTO {
+public class PostRequestDto {
     private String title;
     private String description;
     private Long profileId;
-    private List<Long> categoryIds;
+    private List<Long> categories ;
 }
 

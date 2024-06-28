@@ -1,8 +1,11 @@
 package com.example.ptmedia.controller;
 
+import com.example.ptmedia.controller.dto.Post.PostProfileResponseDto;
+import com.example.ptmedia.controller.dto.Post.PostRequestDto;
+import com.example.ptmedia.controller.dto.Post.PostResponseDto;
+import com.example.ptmedia.controller.dto.Post.PostUpdateDto;
 import com.example.ptmedia.model.Post;
 import com.example.ptmedia.service.PostService;
-import com.example.ptmedia.service.dto.PostRequestDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,23 +19,36 @@ public class PostController {
     private final PostService postService;
 
     @PostMapping("/add")
-    public ResponseEntity<Post> postRegister(@RequestBody PostRequestDTO postRequestDTO) {
-        return ResponseEntity.ok(postService.Register(postRequestDTO));
+    public ResponseEntity<Post> postRegister(@RequestBody PostRequestDto postRequestDTO) {
+        return ResponseEntity.ok(this.postService.postRegister(postRequestDTO));
     }
 
-    @PostMapping("/delete")
-    public ResponseEntity<Boolean> postDelete(@RequestParam Long id) {
-        return ResponseEntity.ok(postService.Delete(id));
+    @GetMapping("/getAll")
+    public ResponseEntity<List<PostResponseDto>> getAllPost() {
+        return ResponseEntity.ok(this.postService.getAllPost());
     }
 
-    @PostMapping("/getAll")
-    public ResponseEntity<List<Post>> postGetALL() {
-        return ResponseEntity.ok(postService.getAllPost());
+    @GetMapping("/get/all/post/{id}")
+    public ResponseEntity<PostProfileResponseDto> findAllProfilePost(@PathVariable Long id) {
+        return ResponseEntity.ok(this.postService.getUserAllPost(id));
+    }
+    @GetMapping("/get/all/post/category/{id}")
+    public ResponseEntity<List<Post>> getCategoryAllPost(@PathVariable Long id) {
+        return ResponseEntity.ok(this.postService.getCategoryAllPost(id));
     }
 
-    @PostMapping("/get")
-    public ResponseEntity<Post> postGet(@RequestParam Long id) {
-        return ResponseEntity.ok(postService.getPost(id));
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Boolean> deletePost(@PathVariable Long id) {
+        return ResponseEntity.ok(this.postService.delete(id));
+    }
+
+    @GetMapping("/get/{id}")
+    public ResponseEntity<PostResponseDto> findById(@PathVariable long id) {
+        return ResponseEntity.ok(this.postService.findById(id));
+    }
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Post> updatePost(@PathVariable long id , @RequestBody PostUpdateDto postUpdateDto) {
+        return ResponseEntity.ok(this.postService.updatePost(id , postUpdateDto));
     }
 
 }
