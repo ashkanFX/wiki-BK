@@ -1,10 +1,11 @@
-package com.example.ptmedia.model;
+package com.example.ptmedia.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -21,7 +22,7 @@ public class Category {
 
     @ManyToMany(mappedBy = "categories")
     @JsonIgnore
-    private Set<Post> posts = new HashSet<>();
+    private List<Post> posts ;
 
     @Override
     public boolean equals(Object o) {
@@ -37,7 +38,7 @@ public class Category {
 
     @Override
     public String toString() {
-        return "Category{" +
+        return "CategoryInterface{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';

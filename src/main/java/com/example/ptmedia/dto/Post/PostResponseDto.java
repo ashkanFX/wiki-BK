@@ -1,7 +1,7 @@
 package com.example.ptmedia.dto.Post;
 
 import com.example.ptmedia.dto.Profile.ProfileResponseDto;
-import com.example.ptmedia.model.Category;
+import com.example.ptmedia.entity.Category;
 import lombok.Data;
 
 import java.util.Set;

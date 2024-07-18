@@ -2,7 +2,7 @@ package com.example.ptmedia.controller;
 
 import com.example.ptmedia.dto.Category.CategoryRequestDto;
 import com.example.ptmedia.dto.Category.CategoryResponseDto;
-import com.example.ptmedia.model.Category;
+import com.example.ptmedia.entity.Category;
 import com.example.ptmedia.service.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

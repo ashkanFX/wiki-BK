@@ -1,4 +1,4 @@
-package com.example.ptmedia.model;
+package com.example.ptmedia.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;

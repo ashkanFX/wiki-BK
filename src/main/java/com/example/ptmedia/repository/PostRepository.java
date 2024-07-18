@@ -1,6 +1,6 @@
 package com.example.ptmedia.repository;
 
-import com.example.ptmedia.model.Post;
+import com.example.ptmedia.entity.Post;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

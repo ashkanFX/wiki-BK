@@ -3,9 +3,9 @@ package com.example.ptmedia.service;
 
 import com.example.ptmedia.dto.Post.*;
 import com.example.ptmedia.dto.Profile.ProfileResponseDto;
-import com.example.ptmedia.model.Category;
-import com.example.ptmedia.model.Post;
-import com.example.ptmedia.model.Profile;
+import com.example.ptmedia.entity.Category;
+import com.example.ptmedia.entity.Post;
+import com.example.ptmedia.entity.Profile;
 import com.example.ptmedia.repository.CategoryRepository;
 import com.example.ptmedia.repository.PostRepository;
 import com.example.ptmedia.repository.ProfileRepository;
@@ -119,7 +119,7 @@ public class PostService {
 //        post.setTitle(postRequestDTO.getTitle());
 //        post.setProfile(profileRepository.findById(postRequestDTO.getProfileId()).orElseThrow(null));
 //        post.setDescription(postRequestDTO.getDescription());
-//      List<Category> categories = categoryRepository.findAllById(postRequestDTO.getCategoryIds());
+//      List<CategoryInterface> categories = categoryRepository.findAllById(postRequestDTO.getCategoryIds());
 //        post.setCategories(new HashSet<>(categories));
 //
 //        postRepository.save(post);

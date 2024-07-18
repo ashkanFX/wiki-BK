@@ -3,7 +3,7 @@ package com.example.ptmedia.service;
 import com.example.ptmedia.dto.Profile.ProfileRegisterRequestDto;
 import com.example.ptmedia.dto.Profile.ProfileRegisterUpdateDto;
 import com.example.ptmedia.dto.Profile.ProfileResponseDto;
-import com.example.ptmedia.model.Profile;
+import com.example.ptmedia.entity.Profile;
 import com.example.ptmedia.repository.PostRepository;
 import com.example.ptmedia.repository.ProfileRepository;
 import lombok.RequiredArgsConstructor;

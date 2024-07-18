@@ -1,0 +1,16 @@
+
+
+data now : 1403/04/28
+
+Project tasks :
+
+      0.Entities business logic should be removed and handle all business in service layer .
+
+      1.Service layer should be cleaned by interface structure and all the services should have an interface and
+      their implementation should be in class.
+
+      2.Mapper should be added to project and be used in all services .
+
+      3.Controllers should be contain try/catch in all methods and handle the exceptions in controller catch .
+
+      4. Swagger should be added

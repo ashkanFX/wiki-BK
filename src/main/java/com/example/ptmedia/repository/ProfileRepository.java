@@ -1,6 +1,6 @@
 package com.example.ptmedia.repository;
 
-import com.example.ptmedia.model.Profile;
+import com.example.ptmedia.entity.Profile;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

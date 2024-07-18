@@ -1,4 +1,4 @@
-package com.example.ptmedia.model;
+package com.example.ptmedia.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
@@ -29,6 +29,7 @@ public class Post {
     @JoinColumn(name = "profile_id", nullable = false)
     @JsonIgnore
     private Profile profile;
+
 
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(name = "post_category",

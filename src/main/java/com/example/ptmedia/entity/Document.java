@@ -1,4 +1,4 @@
-package com.example.ptmedia.model;
+package com.example.ptmedia.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;

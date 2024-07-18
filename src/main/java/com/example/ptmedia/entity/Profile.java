@@ -1,4 +1,4 @@
-package com.example.ptmedia.model;
+package com.example.ptmedia.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -6,7 +6,6 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -24,33 +23,33 @@ public class Profile {
     private String mobile;
 
     @OneToMany(mappedBy = "profile", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Post> posts = new ArrayList<>();
+    private List<Post> posts ;
 
     @OneToMany(mappedBy = "profile", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Rate> rates = new ArrayList<>();
+    private List<Rate> rates ;
 
     @Column(updatable = false)
     @CreationTimestamp
-    private LocalDateTime creat_Date;
+    private LocalDateTime createDate;
     @Column()
     @UpdateTimestamp
-    private LocalDateTime update_Date;
+    private LocalDateTime updateDate;
 
     @Override
     public String toString() {
-        return "Profile{" + "id=" + id + ", name='" + name + '\'' + ", mobile='" + mobile + '\'' + ", creat_Date=" + creat_Date + ", update_Date=" + update_Date + '}';
+        return "Profile{" + "id=" + id + ", name='" + name + '\'' + ", mobile='" + mobile + '\'' + ", create_date=" + createDate + ", update_date=" + updateDate + '}';
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Profile profile)) return false;
-        return Objects.equals(getId(), profile.getId()) && Objects.equals(getName(), profile.getName()) && Objects.equals(getMobile(), profile.getMobile()) && Objects.equals(getCreat_Date(), profile.getCreat_Date()) && Objects.equals(getUpdate_Date(), profile.getUpdate_Date());
+        return Objects.equals(getId(), profile.getId()) && Objects.equals(getName(), profile.getName()) && Objects.equals(getMobile(), profile.getMobile()) && Objects.equals(getCreateDate(), profile.getCreateDate()) && Objects.equals(getUpdateDate(), profile.getUpdateDate());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getName(), getMobile(), getCreat_Date(), getUpdate_Date());
+        return Objects.hash(getId(), getName(), getMobile(), getCreateDate(), getUpdateDate());
     }
 
 

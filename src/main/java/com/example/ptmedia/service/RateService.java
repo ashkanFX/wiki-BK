@@ -1,7 +1,7 @@
 package com.example.ptmedia.service;
 
 import com.example.ptmedia.dto.Rate.RateRequestDto;
-import com.example.ptmedia.model.Rate;
+import com.example.ptmedia.entity.Rate;
 import com.example.ptmedia.repository.PostRepository;
 import com.example.ptmedia.repository.ProfileRepository;
 import com.example.ptmedia.repository.RateRepository;

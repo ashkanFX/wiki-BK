@@ -3,7 +3,7 @@ package com.example.ptmedia.controller;
 import com.example.ptmedia.dto.Profile.ProfileRegisterRequestDto;
 import com.example.ptmedia.dto.Profile.ProfileRegisterUpdateDto;
 import com.example.ptmedia.dto.Profile.ProfileResponseDto;
-import com.example.ptmedia.model.Profile;
+import com.example.ptmedia.entity.Profile;
 import com.example.ptmedia.service.ProfileService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
