@@ -1,8 +1,8 @@
 package com.example.ptmedia.controller;
 
-import com.example.ptmedia.controller.dto.Profile.ProfileRegisterRequestDto;
-import com.example.ptmedia.controller.dto.Profile.ProfileRegisterUpdateDto;
-import com.example.ptmedia.controller.dto.Profile.ProfileResponseDto;
+import com.example.ptmedia.dto.Profile.ProfileRegisterRequestDto;
+import com.example.ptmedia.dto.Profile.ProfileRegisterUpdateDto;
+import com.example.ptmedia.dto.Profile.ProfileResponseDto;
 import com.example.ptmedia.model.Profile;
 import com.example.ptmedia.service.ProfileService;
 import lombok.RequiredArgsConstructor;

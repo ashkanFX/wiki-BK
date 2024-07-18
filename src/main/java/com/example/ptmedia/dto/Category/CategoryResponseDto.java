@@ -1,4 +1,4 @@
-package com.example.ptmedia.controller.dto.Category;
+package com.example.ptmedia.dto.Category;
 
 import lombok.Data;
 

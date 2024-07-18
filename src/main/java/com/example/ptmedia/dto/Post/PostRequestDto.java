@@ -1,4 +1,4 @@
-package com.example.ptmedia.controller.dto.Post;
+package com.example.ptmedia.dto.Post;
 
 
 import lombok.Builder;

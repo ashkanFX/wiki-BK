@@ -1,7 +1,7 @@
 package com.example.ptmedia.service;
 
-import com.example.ptmedia.controller.dto.Category.CategoryRequestDto;
-import com.example.ptmedia.controller.dto.Category.CategoryResponseDto;
+import com.example.ptmedia.dto.Category.CategoryRequestDto;
+import com.example.ptmedia.dto.Category.CategoryResponseDto;
 import com.example.ptmedia.model.Category;
 import com.example.ptmedia.repository.CategoryRepository;
 import lombok.AllArgsConstructor;

@@ -1,8 +1,8 @@
 package com.example.ptmedia.service;
 
 
-import com.example.ptmedia.controller.dto.Post.*;
-import com.example.ptmedia.controller.dto.Profile.ProfileResponseDto;
+import com.example.ptmedia.dto.Post.*;
+import com.example.ptmedia.dto.Profile.ProfileResponseDto;
 import com.example.ptmedia.model.Category;
 import com.example.ptmedia.model.Post;
 import com.example.ptmedia.model.Profile;

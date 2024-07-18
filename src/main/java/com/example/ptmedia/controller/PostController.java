@@ -1,9 +1,9 @@
 package com.example.ptmedia.controller;
 
-import com.example.ptmedia.controller.dto.Post.PostProfileResponseDto;
-import com.example.ptmedia.controller.dto.Post.PostRequestDto;
-import com.example.ptmedia.controller.dto.Post.PostResponseDto;
-import com.example.ptmedia.controller.dto.Post.PostUpdateDto;
+import com.example.ptmedia.dto.Post.PostProfileResponseDto;
+import com.example.ptmedia.dto.Post.PostRequestDto;
+import com.example.ptmedia.dto.Post.PostResponseDto;
+import com.example.ptmedia.dto.Post.PostUpdateDto;
 import com.example.ptmedia.model.Post;
 import com.example.ptmedia.service.PostService;
 import lombok.AllArgsConstructor;

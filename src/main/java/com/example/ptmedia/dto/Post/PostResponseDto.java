@@ -1,11 +1,9 @@
-package com.example.ptmedia.controller.dto.Post;
+package com.example.ptmedia.dto.Post;
 
-import com.example.ptmedia.controller.dto.Category.CategoryResponseDto;
-import com.example.ptmedia.controller.dto.Profile.ProfileResponseDto;
+import com.example.ptmedia.dto.Profile.ProfileResponseDto;
 import com.example.ptmedia.model.Category;
 import lombok.Data;
 
-import java.util.List;
 import java.util.Set;
 
 @Data

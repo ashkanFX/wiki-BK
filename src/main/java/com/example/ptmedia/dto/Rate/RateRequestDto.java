@@ -1,4 +1,4 @@
-package com.example.ptmedia.controller.dto.Rate;
+package com.example.ptmedia.dto.Rate;
 
 import lombok.Data;
 

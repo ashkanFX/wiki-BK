@@ -1,4 +1,4 @@
-package com.example.ptmedia.exception;
+package com.example.ptmedia.exception.message;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

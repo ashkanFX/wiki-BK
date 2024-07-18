@@ -1,5 +1,7 @@
 package com.example.ptmedia.exception;
 
+import com.example.ptmedia.exception.message.AlreadyExistsException;
+import com.example.ptmedia.exception.message.NotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

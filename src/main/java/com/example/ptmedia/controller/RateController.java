@@ -1,6 +1,6 @@
 package com.example.ptmedia.controller;
 
-import com.example.ptmedia.controller.dto.Rate.RateRequestDto;
+import com.example.ptmedia.dto.Rate.RateRequestDto;
 import com.example.ptmedia.model.Rate;
 import com.example.ptmedia.service.RateService;
 import lombok.AllArgsConstructor;
