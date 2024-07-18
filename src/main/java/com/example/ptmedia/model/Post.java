@@ -45,7 +45,7 @@ public class Post {
     @Column(updatable = false)
     private LocalDateTime updateAt;
     @UpdateTimestamp
-    private LocalDateTime creatAt;
+    private LocalDateTime createAt;
 
 
 //    @OneToMany(mappedBy ="post" ,cascade = CascadeType.ALL ,orphanRemoval = true)
@@ -54,14 +54,14 @@ public class Post {
 //    public boolean equals(Object o) {
 //        if (this == o) return true;
 //        if (!(o instanceof Post post)) return false;
-//        return getId() == post.getId() && Objects.equals(getTitle(), post.getTitle()) && Objects.equals(getDescription(), post.getDescription()) && Objects.equals(getProfile(), post.getProfile()) && Objects.equals(getCategories(), post.getCategories()) && Objects.equals(getUpdateAt(), post.getUpdateAt()) && Objects.equals(getCreatAt(), post.getCreatAt());
+//        return getId() == post.getId() && Objects.equals(getTitle(), post.getTitle()) && Objects.equals(getDescription(), post.getDescription()) && Objects.equals(getProfile(), post.getProfile()) && Objects.equals(getCategories(), post.getCategories()) && Objects.equals(getUpdateAt(), post.getUpdateAt()) && Objects.equals(getCreateAt(), post.getCreateAt());
 //    }
 //    @Override
 //    public int hashCode() {
-//        return Objects.hash(getId(), getTitle(), getDescription(), getProfile(), getCategories(), getUpdateAt(), getCreatAt());
+//        return Objects.hash(getId(), getTitle(), getDescription(), getProfile(), getCategories(), getUpdateAt(), getCreateAt());
 //    }
 //    @Override
 //    public String toString() {
-//        return "Post{" + "id=" + id + ", title='" + title + '\'' + ", description='" + description + '\'' + ", profile=" + profile + ", categories=" + categories + ", updateAt=" + updateAt + ", creatAt=" + creatAt + '}';
+//        return "Post{" + "id=" + id + ", title='" + title + '\'' + ", description='" + description + '\'' + ", profile=" + profile + ", categories=" + categories + ", updateAt=" + updateAt + ", CreateAt=" + CreateAt + '}';
 //    }
 }

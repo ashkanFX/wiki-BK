@@ -23,6 +23,11 @@ public class Document {
     @Column
     private String fileName;
 
+
+
+
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -9,5 +9,5 @@ public class PostProfileDto {
     private Long id ;
     private String title ;
     private String description ;
-    private LocalDateTime CreatAt ;
+    private LocalDateTime createAt ;
 }

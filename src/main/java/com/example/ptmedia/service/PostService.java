@@ -66,7 +66,7 @@ public class PostService {
             PostProfileDto postProfileDto = new PostProfileDto();
             postProfileDto.setDescription(post.getDescription());
             postProfileDto.setTitle(post.getTitle());
-            postProfileDto.setCreatAt(post.getCreatAt());
+            postProfileDto.setCreateAt(post.getCreateAt());
             postProfileDto.setId(post.getId());
             return postProfileDto;
         }).collect(Collectors.toList());
@@ -79,12 +79,8 @@ public class PostService {
     }
 
     public Boolean delete(Long id) {
-        try {
             this.postRepository.deleteById(id);
             return true;
-        } catch (Exception exception) {
-            return false;
-        }
     }
 
     public PostResponseDto findById(Long id) {
