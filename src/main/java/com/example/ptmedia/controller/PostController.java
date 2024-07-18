@@ -5,7 +5,7 @@ import com.example.ptmedia.dto.Post.PostRequestDto;
 import com.example.ptmedia.dto.Post.PostResponseDto;
 import com.example.ptmedia.dto.Post.PostUpdateDto;
 import com.example.ptmedia.entity.Post;
-import com.example.ptmedia.service.PostService;
+import com.example.ptmedia.service.impl.PostService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

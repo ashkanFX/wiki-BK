@@ -21,7 +21,6 @@ public class DocumentController {
 //        document.setFileName(file.getOriginalFilename());
 //        document.setPost(post);
 //        document.setContent(file.getBytes());
-//
 //        // Save the file to the database
 //        documentService.save(document);
 //

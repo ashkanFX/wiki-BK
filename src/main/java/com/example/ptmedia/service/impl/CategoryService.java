@@ -1,9 +1,10 @@
-package com.example.ptmedia.service;
+package com.example.ptmedia.service.impl;
 
 import com.example.ptmedia.dto.Category.CategoryRequestDto;
 import com.example.ptmedia.dto.Category.CategoryResponseDto;
 import com.example.ptmedia.entity.Category;
 import com.example.ptmedia.repository.CategoryRepository;
+import com.example.ptmedia.service.CategoryInterface;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,16 +13,18 @@ import java.util.stream.Collectors;
 
 @AllArgsConstructor
 @Service
-public class CategoryService {
+public class CategoryService implements CategoryInterface {
     final private CategoryRepository categoryRepository;
 
+    @Override
     public Category addCategory(CategoryRequestDto categoryRequestDto) {
         Category category = new Category();
         category.setName(categoryRequestDto.getName());
         return this.categoryRepository.save(category);
     }
 
-    public List<CategoryResponseDto> findAll() {
+    @Override
+    public List<CategoryResponseDto> findAllCategory() {
         return this.categoryRepository.findAll().stream().map(category -> {
             CategoryResponseDto categoryResponseDto = new CategoryResponseDto();
             categoryResponseDto.setName(category.getName());
@@ -30,13 +33,9 @@ public class CategoryService {
         }).collect(Collectors.toList());
     }
 
-    public boolean deleteCategory(Long id) {
-        try {
-            this.categoryRepository.deleteById(id);
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
+    @Override
+    public void deleteCategory(Long id) {
+        this.categoryRepository.deleteById(id);
     }
 
 

@@ -2,7 +2,7 @@ package com.example.ptmedia.controller;
 
 import com.example.ptmedia.dto.Rate.RateRequestDto;
 import com.example.ptmedia.entity.Rate;
-import com.example.ptmedia.service.RateService;
+import com.example.ptmedia.service.impl.RateService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

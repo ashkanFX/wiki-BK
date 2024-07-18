@@ -1,18 +1,12 @@
-//package com.example.ptmedia.service;
-//
-//import com.example.ptmedia.model.Document;
-//import com.example.ptmedia.repository.DocumentRepository;
-//import lombok.AllArgsConstructor;
-//import org.springframework.stereotype.Service;
-//import org.springframework.web.multipart.MultipartFile;
-//
-//import java.io.IOException;
-//import java.util.List;
-//import java.util.Optional;
-//
-//@Service
-//@AllArgsConstructor
-//public class DocumentService {
+package com.example.ptmedia.service.impl;
+
+import com.example.ptmedia.service.DocumentInterface;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
+
+@Service
+@AllArgsConstructor
+public class DocumentService implements DocumentInterface {
 //    private final DocumentRepository documentRepository;
 //
 //
@@ -34,4 +28,4 @@
 //    public Optional<Document> findById(Long documentId) {
 //        return documentRepository.findById(documentId);
 //    }
-//}
+}

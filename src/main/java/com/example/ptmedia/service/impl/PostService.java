@@ -1,4 +1,4 @@
-package com.example.ptmedia.service;
+package com.example.ptmedia.service.impl;
 
 
 import com.example.ptmedia.dto.Post.*;
@@ -9,6 +9,7 @@ import com.example.ptmedia.entity.Profile;
 import com.example.ptmedia.repository.CategoryRepository;
 import com.example.ptmedia.repository.PostRepository;
 import com.example.ptmedia.repository.ProfileRepository;
+import com.example.ptmedia.service.PostInterface;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -21,12 +22,12 @@ import java.util.stream.Collectors;
 @Service
 @Slf4j
 @AllArgsConstructor
-public class PostService {
+public class PostService implements PostInterface {
     private final PostRepository postRepository;
     private final ProfileRepository profileRepository;
     private final CategoryRepository categoryRepository;
 
-
+    @Override
     public Post postRegister(PostRequestDto postRequestDTO) {
         Post post = new Post();
         Set<Category> categories = postRequestDTO.getCategories().stream().map(
@@ -40,6 +41,7 @@ public class PostService {
         return this.postRepository.save(post);
     }
 
+    @Override
     public List<PostResponseDto> getAllPost() {
         return this.postRepository.findAll().stream().map(post -> {
             PostResponseDto postResponseDto = new PostResponseDto();
@@ -56,6 +58,7 @@ public class PostService {
         }).collect(Collectors.toList());
     }
 
+    @Override
     public PostProfileResponseDto getUserAllPost(long id) {
         Profile profile = profileRepository.findById(id).orElse(null);
         PostProfileResponseDto postProfileResponseDto = new PostProfileResponseDto();
@@ -74,15 +77,19 @@ public class PostService {
         return postProfileResponseDto;
     }
 
+
+    @Override
     public List<Post> getCategoryAllPost(long id) {
         return postRepository.findPostsByCategoryId(id);
     }
 
+    @Override
     public Boolean delete(Long id) {
-            this.postRepository.deleteById(id);
-            return true;
+        this.postRepository.deleteById(id);
+        return true;
     }
 
+    @Override
     public PostResponseDto findById(Long id) {
         PostResponseDto postResponseDto = new PostResponseDto();
         ProfileResponseDto profileResponseDto = new ProfileResponseDto();
@@ -97,6 +104,7 @@ public class PostService {
         return postResponseDto;
     }
 
+    @Override
     public Post updatePost(Long id, PostUpdateDto postUpdateDto) {
         Post post = this.postRepository.findById(id).orElse(null);
         if (postUpdateDto.getDescription() != null) {
@@ -110,55 +118,4 @@ public class PostService {
         assert post != null;
         return this.postRepository.save(post);
     }
-    //    private final ProfileRepository profileRepository;
-//   private final CategoryRepository categoryRepository;
-//
-//    public Post Register(PostRequestDto postRequestDTO) {
-//
-//        Post post = new Post();
-//        post.setTitle(postRequestDTO.getTitle());
-//        post.setProfile(profileRepository.findById(postRequestDTO.getProfileId()).orElseThrow(null));
-//        post.setDescription(postRequestDTO.getDescription());
-//      List<CategoryInterface> categories = categoryRepository.findAllById(postRequestDTO.getCategoryIds());
-//        post.setCategories(new HashSet<>(categories));
-//
-//        postRepository.save(post);
-//        return postRepository.save(post);
-//    }
-//
-//    public boolean Delete(Long id) {
-//        try {
-//            postRepository.deleteById(id);
-//            return true;
-//        } catch (Exception exception) {
-//            return false;
-//        }
-//    }
-//
-//    public List<Post> getAllPost() {
-//
-//
-//        return postRepository.findAll();
-//    }
-//
-//    public Post getPost(Long id) {
-//        Optional<Post> post = postRepository.findById(id);
-//        post.ifPresent(value -> {
-//            Optional<Profile> profile = profileRepository.findById(value.getId());
-//            ProfileDto profileDto = new ProfileDto();
-//            PostProfileDto postDto = new PostProfileDto();
-//            ArrayList<String> categories = new ArrayList<>();
-//            value.getCategories().forEach(item -> {
-//                profileDto.setName(value.getProfile().getName());
-//                profileDto.setId(value.getProfile().getId());
-//                categories.add(item.getName());
-//                postDto.setCategories(categories);
-//                postDto.setDescription(value.getDescription());
-//                postDto.setTitle(value.getTitle());
-//                postDto.setTitle(value.getTitle());
-//                postDto.setProfileDto(profileDto);
-//            });
-    //        });
-//        return postRepository.findById(id).orElseThrow(null);
-//    }
 }

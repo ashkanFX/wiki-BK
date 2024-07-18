@@ -4,7 +4,7 @@ import com.example.ptmedia.dto.Profile.ProfileRegisterRequestDto;
 import com.example.ptmedia.dto.Profile.ProfileRegisterUpdateDto;
 import com.example.ptmedia.dto.Profile.ProfileResponseDto;
 import com.example.ptmedia.entity.Profile;
-import com.example.ptmedia.service.ProfileService;
+import com.example.ptmedia.service.impl.ProfileService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

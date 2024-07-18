@@ -3,7 +3,7 @@ package com.example.ptmedia.controller;
 import com.example.ptmedia.dto.Category.CategoryRequestDto;
 import com.example.ptmedia.dto.Category.CategoryResponseDto;
 import com.example.ptmedia.entity.Category;
-import com.example.ptmedia.service.CategoryService;
+import com.example.ptmedia.service.impl.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +14,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/category")
 @RequiredArgsConstructor
-
 public class CategoryController {
     private final CategoryService categoryService;
 
@@ -35,12 +34,12 @@ public class CategoryController {
 
     @GetMapping("/getAll")
     public ResponseEntity<List<CategoryResponseDto>> addAllCategory() {
-        return ResponseEntity.ok(categoryService.findAll());
+        return ResponseEntity.ok(categoryService.findAllCategory());
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Boolean> deleteCategory(@PathVariable Long id) {
-        return ResponseEntity.ok(categoryService.deleteCategory(id));
+    public void deleteCategory(@PathVariable Long id) {
+        categoryService.deleteCategory(id);
     }
 
 
