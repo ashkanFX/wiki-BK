@@ -9,6 +9,7 @@ Project tasks :
       1.Service layer should be cleaned by interface structure and all the services should have an interface and
       their implementation should be in class.
 
+
       2.Mapper should be added to project and be used in all services .
 
       3.Controllers should be contain try/catch in all methods and handle the exceptions in controller catch .
