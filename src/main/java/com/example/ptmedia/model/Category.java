@@ -1,5 +1,6 @@
 package com.example.ptmedia.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -19,7 +20,7 @@ public class Category {
     String name;
 
     @ManyToMany(mappedBy = "categories")
-
+    @JsonIgnore
     private Set<Post> posts = new HashSet<>();
 
     @Override

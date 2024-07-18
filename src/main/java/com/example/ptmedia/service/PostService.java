@@ -51,6 +51,7 @@ public class PostService {
             profileResponseDto.setMobile(post.getProfile().getMobile());
             profileResponseDto.setId(post.getProfile().getId());
             postResponseDto.setProfile(profileResponseDto);
+            postResponseDto.setCategory(post.getCategories());
             return postResponseDto;
         }).collect(Collectors.toList());
     }
