@@ -15,3 +15,18 @@ Project tasks :
       3.Controllers should be contain try/catch in all methods and handle the exceptions in controller catch .
 
       4. Swagger should be added
+
+      5. lock and unlock api
+        5/1 unlock service
+            1. sing in
+            2. sing up
+            3. get post by id
+            4. get latest post
+            5. post base on category search
+            6. basic profile detail
+            7. doc of profile
+            8. all comment service
+        5/2 locked service
+            1. CRUD Post
+            2. CRUD category
+            3. CRUD Doc
