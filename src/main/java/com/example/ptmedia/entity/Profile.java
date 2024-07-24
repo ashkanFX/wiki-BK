@@ -19,7 +19,7 @@ public class Profile {
     private Long id;
     @Column
     private String name;
-    @Column()
+    @Column
     private String mobile;
 
     @OneToMany(mappedBy = "profile", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -31,7 +31,7 @@ public class Profile {
     @Column(updatable = false)
     @CreationTimestamp
     private LocalDateTime createDate;
-    @Column()
+    @Column
     @UpdateTimestamp
     private LocalDateTime updateDate;
 

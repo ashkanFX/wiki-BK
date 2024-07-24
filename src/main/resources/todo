@@ -9,7 +9,6 @@ Project tasks :
       1.Service layer should be cleaned by interface structure and all the services should have an interface and
       their implementation should be in class.
 
-
       2.Mapper should be added to project and be used in all services .
 
       3.Controllers should be contain try/catch in all methods and handle the exceptions in controller catch .
@@ -31,5 +30,18 @@ Project tasks :
             2. CRUD category
             3. CRUD Doc
 
-
       6.  need to add role to profile and change profile name to user
+
+      7.profile ---> user
+
+      8.@Data --> getter setter
+
+      9.end Pint for controller
+
+      10.request part
+
+      11.try  catch in controller
+
+      12.interface for repository
+
+      13.add doc

@@ -2,20 +2,22 @@ package com.example.ptmedia.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
+
+
+@Getter
+@Setter
 @Entity
-@Data
 @Table(name = "category")
 public class Category {
     @Id
     @Column
-    @GeneratedValue()
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     @Column
     String name;
