@@ -19,14 +19,22 @@ public class Profile {
     private Long id;
     @Column
     private String name;
+
+    @Column
+    private String email;
+
+    @Column
+    private String password;
     @Column
     private String mobile;
+    @Column
+    private String Role;
 
     @OneToMany(mappedBy = "profile", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Post> posts ;
+    private List<Post> posts;
 
     @OneToMany(mappedBy = "profile", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Rate> rates ;
+    private List<Rate> rates;
 
     @Column(updatable = false)
     @CreationTimestamp
