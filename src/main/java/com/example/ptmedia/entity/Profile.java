@@ -1,5 +1,6 @@
 package com.example.ptmedia.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
@@ -8,6 +9,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @Data
 @Entity
@@ -35,6 +37,9 @@ public class Profile {
 
     @OneToMany(mappedBy = "profile", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Rate> rates;
+
+    @OneToMany(mappedBy = "profile", fetch = FetchType.EAGER)
+    private Set<Authority> authorities;
 
     @Column(updatable = false)
     @CreationTimestamp

@@ -59,6 +59,23 @@ public class PostService implements PostInterface {
     }
 
     @Override
+    public List<PostResponseDto> getLatestPost() {
+        return this.postRepository.findTop4ByOrderByIdDesc().stream().map(post -> {
+            PostResponseDto postResponseDto = new PostResponseDto();
+            ProfileResponseDto profileResponseDto = new ProfileResponseDto();
+            postResponseDto.setDescription(post.getDescription());
+            postResponseDto.setId(post.getId());
+            postResponseDto.setTitle(post.getTitle());
+            profileResponseDto.setName(post.getProfile().getName());
+            profileResponseDto.setMobile(post.getProfile().getMobile());
+            profileResponseDto.setId(post.getProfile().getId());
+            postResponseDto.setProfile(profileResponseDto);
+            postResponseDto.setCategory(post.getCategories());
+            return postResponseDto;
+        }).collect(Collectors.toList());
+    }
+
+    @Override
     public PostProfileResponseDto getUserAllPost(long id) {
         Profile profile = profileRepository.findById(id).orElse(null);
         PostProfileResponseDto postProfileResponseDto = new PostProfileResponseDto();

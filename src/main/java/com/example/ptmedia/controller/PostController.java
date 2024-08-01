@@ -28,6 +28,10 @@ public class PostController {
     public ResponseEntity<List<PostResponseDto>> getAllPost() {
         return ResponseEntity.ok(this.postService.getAllPost());
     }
+    @GetMapping("/latest")
+    public ResponseEntity<List<PostResponseDto>> getLatestPost() {
+        return ResponseEntity.ok(this.postService.getLatestPost());
+    }
 
     @GetMapping("/get/all/post/{id}")
     public ResponseEntity<PostProfileResponseDto> findAllProfilePost(@PathVariable Long id) {

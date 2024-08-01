@@ -13,6 +13,8 @@ public interface PostInterface {
 
     List<PostResponseDto> getAllPost() throws Exception;
 
+    List<PostResponseDto> getLatestPost();
+
     PostProfileResponseDto getUserAllPost(long id) throws Exception;
 
     List<Post> getCategoryAllPost(long id) throws Exception;
