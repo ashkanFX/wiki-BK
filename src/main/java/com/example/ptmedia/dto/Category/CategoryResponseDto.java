@@ -1,9 +1,13 @@
 package com.example.ptmedia.dto.Category;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public class CategoryResponseDto {
     private Long id;
     private String name;
+    private String color;
+    private Boolean active;
 }

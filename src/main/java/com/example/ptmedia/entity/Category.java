@@ -19,12 +19,18 @@ public class Category {
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    @Column
+    @Column(unique = true)
     String name;
+
+    @Column
+    String color;
+
+    @Column()
+    Boolean Active;
 
     @ManyToMany(mappedBy = "categories")
     @JsonIgnore
-    private List<Post> posts ;
+    private List<Post> posts;
 
     @Override
     public boolean equals(Object o) {

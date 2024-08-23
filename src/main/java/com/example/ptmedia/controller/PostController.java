@@ -20,8 +20,8 @@ public class PostController {
     private final PostService postService;
 
     @PostMapping("/add")
-    public ResponseEntity<Post> postRegister(@RequestBody PostRequestDto postRequestDTO) {
-        return ResponseEntity.ok(this.postService.postRegister(postRequestDTO));
+    public void postRegister(@RequestBody PostRequestDto postRequestDTO) {
+        System.out.println();
     }
 
     @GetMapping("/getAll")

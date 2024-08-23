@@ -22,9 +22,9 @@ public class SecurityConfig {
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         CsrfTokenRequestAttributeHandler csrfTokenRequestAttributeHandler = new CsrfTokenRequestAttributeHandler();
-
         http.securityContext(contextConfig -> contextConfig.requireExplicitSave(false))
-                .sessionManagement(sessionConfig -> sessionConfig.sessionCreationPolicy(SessionCreationPolicy.ALWAYS)).cors(corsConfig -> corsConfig.configurationSource(request -> {
+                    .sessionManagement(sessionConfig -> sessionConfig.sessionCreationPolicy(SessionCreationPolicy.ALWAYS))
+                .cors(corsConfig -> corsConfig.configurationSource(request -> {
                     CorsConfiguration config = new CorsConfiguration();
                     config.setAllowedOrigins(Collections.singletonList("http://localhost:4200"));
                     config.setAllowedMethods(Collections.singletonList("*"));
@@ -34,12 +34,12 @@ public class SecurityConfig {
                     return config;
                 })).
                 csrf(csrfConfig -> csrfConfig.csrfTokenRequestHandler(csrfTokenRequestAttributeHandler)
-                        .ignoringRequestMatchers("/register" ,"/post/latest")
+                        .ignoringRequestMatchers("/register", "/post/latest")
                         .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()))
                 .addFilterAfter(new CsrfCookieFilter(), BasicAuthenticationFilter.class)
-                .authorizeHttpRequests(auth -> auth.requestMatchers("/category/add", "/post/add", "/post/getAll")
-                        .authenticated()
-                        .requestMatchers("/register", "/user", "/post/latest" ,"/category/getAll").permitAll());
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/category/add", "/category/delete/**", "/post/add", "/post/getAll").authenticated()
+                        .requestMatchers("/register", "/user", "/post/latest", "/category/getAll").permitAll());
         http.formLogin(withDefaults());
         http.httpBasic();
         return http.build();

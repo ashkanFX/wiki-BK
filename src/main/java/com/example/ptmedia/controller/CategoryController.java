@@ -19,7 +19,6 @@ public class CategoryController {
 
     @PostMapping("/add")
     public ResponseEntity<Category> addCategory(@RequestBody CategoryRequestDto categoryRequestDto) {
-
         try {
             Category requestDto = categoryService.addCategory(categoryRequestDto);
             return ResponseEntity.ok(requestDto);
@@ -41,6 +40,5 @@ public class CategoryController {
     public void deleteCategory(@PathVariable Long id) {
         categoryService.deleteCategory(id);
     }
-
 
 }

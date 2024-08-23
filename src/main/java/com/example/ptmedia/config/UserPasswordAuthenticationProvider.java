@@ -1,5 +1,6 @@
 package com.example.ptmedia.config;
 
+import com.example.ptmedia.entity.Authority;
 import com.example.ptmedia.entity.Profile;
 import com.example.ptmedia.repository.ProfileRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Component
 public class UserPasswordAuthenticationProvider implements AuthenticationProvider {
@@ -28,15 +30,13 @@ public class UserPasswordAuthenticationProvider implements AuthenticationProvide
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-        String userName = authentication.getName();
+            String userName = authentication.getName();
         String password = authentication.getCredentials().toString();
         List<Profile> profiles = profileRepository.findByName(userName);
         if (profiles.size() > 0) {
             if (passwordEncoder.matches(password, profiles.get(0).getPassword())) {
-                List<GrantedAuthority> authorities = new ArrayList<>();
-                System.out.println(profiles.get(0).getRole());
-                authorities.add(new SimpleGrantedAuthority(profiles.get(0).getRole()));
-                return new UsernamePasswordAuthenticationToken(userName, password, authorities);
+                return new UsernamePasswordAuthenticationToken(userName, password,
+                        this.grantedAuthorities(profiles.get(0).getAuthorities()));
             } else {
                 throw new BadCredentialsException("invalid pass");
             }
@@ -46,6 +46,13 @@ public class UserPasswordAuthenticationProvider implements AuthenticationProvide
         }
     }
 
+    private List<GrantedAuthority> grantedAuthorities(Set<Authority> authorities){
+        List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
+        for (Authority authority: authorities) {
+            grantedAuthorities.add(new SimpleGrantedAuthority(authority.getName()));
+        }
+        return grantedAuthorities;
+    }
     @Override
     public boolean supports(Class<?> authentication) {
         return (UsernamePasswordAuthenticationToken.class.isAssignableFrom(authentication));

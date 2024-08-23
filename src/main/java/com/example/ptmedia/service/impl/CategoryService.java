@@ -20,6 +20,8 @@ public class CategoryService implements CategoryInterface {
     public Category addCategory(CategoryRequestDto categoryRequestDto) {
         Category category = new Category();
         category.setName(categoryRequestDto.getName());
+        category.setColor(categoryRequestDto.getColor());
+        category.setActive(categoryRequestDto.getActive());
         return this.categoryRepository.save(category);
     }
 
@@ -27,8 +29,10 @@ public class CategoryService implements CategoryInterface {
     public List<CategoryResponseDto> findAllCategory() {
         return this.categoryRepository.findAll().stream().map(category -> {
             CategoryResponseDto categoryResponseDto = new CategoryResponseDto();
-            categoryResponseDto.setName(category.getName());
             categoryResponseDto.setId(category.getId());
+            categoryResponseDto.setName(category.getName());
+            categoryResponseDto.setActive(category.getActive());
+            categoryResponseDto.setColor(category.getColor());
             return categoryResponseDto;
         }).collect(Collectors.toList());
     }

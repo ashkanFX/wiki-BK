@@ -39,6 +39,7 @@ public class Profile {
     private List<Rate> rates;
 
     @OneToMany(mappedBy = "profile", fetch = FetchType.EAGER)
+
     private Set<Authority> authorities;
 
     @Column(updatable = false)
