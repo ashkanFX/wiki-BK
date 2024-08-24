@@ -11,7 +11,7 @@ import java.util.List;
 public class PostRequestDto {
     private String title;
     private String description;
-    private Long profileId;
+    private Integer profileId;
     private List<Long> categories ;
 }
 

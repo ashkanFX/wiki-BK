@@ -6,6 +6,6 @@ import java.util.List;
 @Data
 public class PostProfileResponseDto {
     private String name;
-    private Long profileId;
+    private Integer profileId;
     private List<PostProfileDto> posts;
 }

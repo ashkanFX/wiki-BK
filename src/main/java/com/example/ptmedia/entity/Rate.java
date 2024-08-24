@@ -16,9 +16,9 @@ public class Rate {
     private Long id;
     private int value;
     @ManyToOne
-    @JoinColumn(name = "profile_id")
+    @JoinColumn(name = "user_id")
     @JsonIgnore
-    private Profile profile;
+    private User user;
     @ManyToOne
     @JoinColumn(name = "post_id")
     @JsonIgnore
@@ -28,7 +28,7 @@ public class Rate {
         return "Rate{" +
                 "id=" + id +
                 ", value=" + value +
-                ", profile=" + profile +
+                ", profile=" + user +
                 ", post=" + post +
                 '}';
     }
@@ -36,10 +36,10 @@ public class Rate {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Rate rate)) return false;
-        return getValue() == rate.getValue() && getId().equals(rate.getId()) && getProfile().equals(rate.getProfile()) && getPost().equals(rate.getPost());
+        return getValue() == rate.getValue() && getId().equals(rate.getId()) && getUser().equals(rate.getUser()) && getPost().equals(rate.getPost());
     }
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getValue(), getProfile(), getPost());
+        return Objects.hash(getId(), getValue(), getUser(), getPost());
     }
 }

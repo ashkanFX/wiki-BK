@@ -26,9 +26,9 @@ public class Post {
     private String description;
 
     @ManyToOne
-    @JoinColumn(name = "profile_id", nullable = false)
+    @JoinColumn(name = "user_id", nullable = false)
     @JsonIgnore
-    private Profile profile;
+    private User user;
 
 
     @ManyToMany(cascade = CascadeType.PERSIST)

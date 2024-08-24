@@ -5,10 +5,10 @@ import com.example.ptmedia.dto.Post.*;
 import com.example.ptmedia.dto.Profile.ProfileResponseDto;
 import com.example.ptmedia.entity.Category;
 import com.example.ptmedia.entity.Post;
-import com.example.ptmedia.entity.Profile;
+import com.example.ptmedia.entity.User;
 import com.example.ptmedia.repository.CategoryRepository;
 import com.example.ptmedia.repository.PostRepository;
-import com.example.ptmedia.repository.ProfileRepository;
+import com.example.ptmedia.repository.UserRepository;
 import com.example.ptmedia.service.PostInterface;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class PostService implements PostInterface {
     private final PostRepository postRepository;
-    private final ProfileRepository profileRepository;
+    private final UserRepository userRepository;
     private final CategoryRepository categoryRepository;
 
     @Override
@@ -33,8 +33,8 @@ public class PostService implements PostInterface {
         Set<Category> categories = postRequestDTO.getCategories().stream().map(
                 categoryRepository::findById
         ).toList().stream().filter(Optional::isPresent).map(Optional::get).collect(Collectors.toSet());
-        Profile profile = this.profileRepository.findById(postRequestDTO.getProfileId()).orElse(null);
-        post.setProfile(profile);
+        User user = this.userRepository.findById(postRequestDTO.getProfileId()).orElse(null);
+        post.setUser(user);
         post.setCategories(categories);
         post.setDescription(postRequestDTO.getDescription());
         post.setTitle(postRequestDTO.getTitle());
@@ -49,9 +49,9 @@ public class PostService implements PostInterface {
             postResponseDto.setDescription(post.getDescription());
             postResponseDto.setId(post.getId());
             postResponseDto.setTitle(post.getTitle());
-            profileResponseDto.setName(post.getProfile().getName());
-            profileResponseDto.setMobile(post.getProfile().getMobile());
-            profileResponseDto.setId(post.getProfile().getId());
+            profileResponseDto.setName(post.getUser().getName());
+            profileResponseDto.setMobile(post.getUser().getMobile());
+            profileResponseDto.setId(post.getUser().getId());
             postResponseDto.setProfile(profileResponseDto);
             postResponseDto.setCategory(post.getCategories());
             return postResponseDto;
@@ -59,13 +59,13 @@ public class PostService implements PostInterface {
     }
 
     @Override
-    public PostProfileResponseDto getUserAllPost(long id) {
-        Profile profile = profileRepository.findById(id).orElse(null);
+    public PostProfileResponseDto getUserAllPost(Integer id) {
+        User user = userRepository.findById(id).orElse(null);
         PostProfileResponseDto postProfileResponseDto = new PostProfileResponseDto();
-        assert profile != null;
-        postProfileResponseDto.setProfileId(profile.getId());
-        postProfileResponseDto.setName(profile.getName());
-        List<PostProfileDto> posts = this.postRepository.findByProfile_id(id).stream().map(post -> {
+        assert user != null;
+        postProfileResponseDto.setProfileId(user.getId());
+        postProfileResponseDto.setName(user.getName());
+        List<PostProfileDto> posts = this.postRepository.findByUser_id(id).stream().map(post -> {
             PostProfileDto postProfileDto = new PostProfileDto();
             postProfileDto.setDescription(post.getDescription());
             postProfileDto.setTitle(post.getTitle());
@@ -94,9 +94,9 @@ public class PostService implements PostInterface {
         PostResponseDto postResponseDto = new PostResponseDto();
         ProfileResponseDto profileResponseDto = new ProfileResponseDto();
         Post post = this.postRepository.findById(id).orElse(null);
-        profileResponseDto.setId(post.getProfile().getId());
-        profileResponseDto.setName(post.getProfile().getName());
-        profileResponseDto.setMobile(post.getProfile().getMobile());
+        profileResponseDto.setId(post.getUser().getId());
+        profileResponseDto.setName(post.getUser().getName());
+        profileResponseDto.setMobile(post.getUser().getMobile());
         postResponseDto.setDescription(post.getDescription());
         postResponseDto.setTitle(post.getTitle());
         postResponseDto.setId(post.getId());

@@ -5,6 +5,6 @@ import lombok.Data;
 @Data
 public class RateRequestDto {
     private Long postId;
-    private Long profileId;
+    private Integer profileId;
     private int rate;
 }

@@ -3,10 +3,9 @@ package com.example.ptmedia.service.impl;
 import com.example.ptmedia.dto.Profile.ProfileRegisterRequestDto;
 import com.example.ptmedia.dto.Profile.ProfileRegisterUpdateDto;
 import com.example.ptmedia.dto.Profile.ProfileResponseDto;
-import com.example.ptmedia.entity.Profile;
-import com.example.ptmedia.repository.PostRepository;
-import com.example.ptmedia.repository.ProfileRepository;
-import com.example.ptmedia.service.ProfileInterface;
+import com.example.ptmedia.entity.User;
+import com.example.ptmedia.repository.UserRepository;
+import com.example.ptmedia.service.UserInterface;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Sort;
@@ -18,20 +17,20 @@ import java.util.stream.Collectors;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class ProfileService implements ProfileInterface {
-    private final ProfileRepository profileRepository;
+public class UserService implements UserInterface {
+    private final UserRepository userRepository;
 
     @Override
-    public Profile registerProfile(ProfileRegisterRequestDto profileRegisterRequestDto) {
-        Profile profile = new Profile();
-        profile.setName(profileRegisterRequestDto.getName());
-        profile.setMobile(profileRegisterRequestDto.getMobile());
-        return this.profileRepository.save(profile);
+    public User registerProfile(ProfileRegisterRequestDto profileRegisterRequestDto) {
+        User user = new User();
+        user.setName(profileRegisterRequestDto.getName());
+        user.setMobile(profileRegisterRequestDto.getMobile());
+        return this.userRepository.save(user);
     }
 
     @Override
     public List<ProfileResponseDto> findAllProfile() {
-        return this.profileRepository.findAll(Sort.by("name")).stream().map(prifile -> {
+        return this.userRepository.findAll(Sort.by("name")).stream().map(prifile -> {
             ProfileResponseDto profileResponseDto = new ProfileResponseDto();
             profileResponseDto.setId(prifile.getId());
             profileResponseDto.setMobile(prifile.getMobile());
@@ -42,10 +41,10 @@ public class ProfileService implements ProfileInterface {
 
 
     @Override
-    public Boolean deleteProfile(Long id) {
+    public Boolean deleteProfile(Integer id) {
         try {
-            this.profileRepository.findById(id).ifPresent(profile -> {
-                this.profileRepository.deleteById(profile.getId());
+            this.userRepository.findById(id).ifPresent(profile -> {
+                this.userRepository.deleteById(profile.getId());
             });
             return true;
         } catch (Exception exception) {
@@ -54,21 +53,21 @@ public class ProfileService implements ProfileInterface {
     }
 
     @Override
-    public ProfileResponseDto getById(long id) {
+    public ProfileResponseDto getById(Integer id) {
 
         ProfileResponseDto profileResponseDto = new ProfileResponseDto();
-        this.profileRepository.findById(id).ifPresent(profile -> {
-            profileResponseDto.setId(profile.getId());
-            profileResponseDto.setName(profile.getName());
-            profileResponseDto.setMobile(profile.getMobile());
+        this.userRepository.findById(id).ifPresent(user -> {
+            profileResponseDto.setId(user.getId());
+            profileResponseDto.setName(user.getName());
+            profileResponseDto.setMobile(user.getMobile());
         });
 
         return profileResponseDto;
     }
 
     @Override
-    public Profile updateProfile(Long id, ProfileRegisterUpdateDto profileRegisterUpdateDto) {
-        Profile profile = this.profileRepository.findById(id).orElse(null);
+    public User updateProfile(Integer id, ProfileRegisterUpdateDto profileRegisterUpdateDto) {
+        User profile = this.userRepository.findById(id).orElse(null);
         if (profile != null) {
             if (profileRegisterUpdateDto.getMobile() != null) {
                 profile.setMobile(profileRegisterUpdateDto.getMobile());
@@ -76,7 +75,7 @@ public class ProfileService implements ProfileInterface {
             if (profileRegisterUpdateDto.getName() != null) {
                 profile.setName(profileRegisterUpdateDto.getName());
             }
-            return this.profileRepository.save(profile);
+            return this.userRepository.save(profile);
         }
         return null;
     }

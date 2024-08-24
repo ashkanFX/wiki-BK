@@ -31,7 +31,7 @@ public class PostController {
     }
 
     @GetMapping("/get/all/post/{id}")
-    public ResponseEntity<PostProfileResponseDto> findAllProfilePost(@PathVariable Long id) {
+    public ResponseEntity<PostProfileResponseDto> findAllProfilePost(@PathVariable Integer id) {
         return ResponseEntity.ok(this.postService.getUserAllPost(id));
     }
     @GetMapping("/get/all/post/category/{id}")
