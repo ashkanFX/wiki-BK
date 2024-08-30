@@ -5,6 +5,7 @@ import com.example.ptmedia.dto.Category.CategoryResponseDto;
 import com.example.ptmedia.entity.Category;
 import com.example.ptmedia.service.impl.CategoryService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,19 +18,17 @@ import java.util.List;
 public class CategoryController {
     private final CategoryService categoryService;
 
+    @ResponseStatus(value = HttpStatus.CREATED)
     @PostMapping("/add")
-    public ResponseEntity<Category> addCategory(@RequestBody CategoryRequestDto categoryRequestDto) {
-
+    public Category addCategory(@RequestBody CategoryRequestDto categoryRequestDto) {
         try {
-            Category requestDto = categoryService.addCategory(categoryRequestDto);
-            return ResponseEntity.ok(requestDto);
+            return categoryService.addCategory(categoryRequestDto);
 
         } catch (Exception exception) {
             exception.printStackTrace();
             ResponseEntity.badRequest().body(exception.getMessage());
         }
         return null ;
-
     }
 
     @GetMapping("/getAll")
@@ -37,6 +36,7 @@ public class CategoryController {
         return ResponseEntity.ok(categoryService.findAllCategory());
     }
 
+    @ResponseStatus(value = HttpStatus.NO_CONTENT)
     @DeleteMapping("/delete/{id}")
     public void deleteCategory(@PathVariable Long id) {
         categoryService.deleteCategory(id);

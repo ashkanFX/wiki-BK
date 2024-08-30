@@ -48,7 +48,7 @@ public class User implements UserDetails {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Rate> rates;
 
-    @Column(updatable = false)
+    @Column(updatable = false , nullable = false)
     @CreationTimestamp
     private LocalDateTime createDate;
     @Column()

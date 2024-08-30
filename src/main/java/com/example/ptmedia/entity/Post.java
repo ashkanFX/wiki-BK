@@ -42,12 +42,12 @@ public class Post {
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Rate> rates = new ArrayList<>();
 
+    @Column(updatable = false ,nullable = false)
     @CreationTimestamp
-    @Column(updatable = false)
-    private LocalDateTime updateAt;
-    @UpdateTimestamp
     private LocalDateTime createAt;
 
+    @UpdateTimestamp
+    private LocalDateTime updateAt;
 
 //    @OneToMany(mappedBy ="post" ,cascade = CascadeType.ALL ,orphanRemoval = true)
 //    private Set<Rate> rates = new HashSet<>();

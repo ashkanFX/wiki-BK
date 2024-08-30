@@ -7,6 +7,7 @@ import com.example.ptmedia.dto.Post.PostUpdateDto;
 import com.example.ptmedia.entity.Post;
 import com.example.ptmedia.service.impl.PostService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,11 +16,11 @@ import java.util.List;
 @RestController
 @RequestMapping("/post")
 @AllArgsConstructor
-@CrossOrigin()
-
+@CrossOrigin(origins = "http://localhost:4200")
 public class PostController {
     private final PostService postService;
 
+    @ResponseStatus(value = HttpStatus.CREATED)
     @PostMapping("/add")
     public ResponseEntity<Post> postRegister(@RequestBody PostRequestDto postRequestDTO) {
         return ResponseEntity.ok(this.postService.postRegister(postRequestDTO));
