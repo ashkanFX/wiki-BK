@@ -21,5 +21,7 @@ public interface PostInterface {
 
     PostResponseDto findById(Long id) throws Exception;
 
+    List<Post> getLatest();
+
     Post updatePost(Long id, PostUpdateDto postUpdateDto) throws Exception;
 }

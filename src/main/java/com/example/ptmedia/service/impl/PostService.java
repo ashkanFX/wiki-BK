@@ -105,6 +105,12 @@ public class PostService implements PostInterface {
     }
 
     @Override
+    public List<Post> getLatest() {
+        return this.postRepository.getLatest();
+
+    }
+
+    @Override
     public Post updatePost(Long id, PostUpdateDto postUpdateDto) {
         Post post = this.postRepository.findById(id).orElse(null);
         if (postUpdateDto.getDescription() != null) {

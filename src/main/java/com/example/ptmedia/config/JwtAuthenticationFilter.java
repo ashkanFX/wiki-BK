@@ -37,12 +37,10 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             filterChain.doFilter(request, response);
             return;
         }
-        System.out.println("Incoming request headers:");
-        Enumeration<String> headerNames = request.getHeaderNames();
+         Enumeration<String> headerNames = request.getHeaderNames();
         while (headerNames.hasMoreElements()) {
             String headerName = headerNames.nextElement();
-            System.out.println(headerName + ": " + request.getHeader(headerName));
-        }
+         }
         final String authHeader = request.getHeader("Authorization");
          final String jwt;
         final String userEmail;

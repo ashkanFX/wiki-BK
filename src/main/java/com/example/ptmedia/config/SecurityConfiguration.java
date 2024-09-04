@@ -25,6 +25,7 @@ import static org.springframework.security.config.http.SessionCreationPolicy.STA
 public class SecurityConfiguration {
     private static final String[] WHITE_LIST_URL = {"" +
             "/api/v1/auth/**",
+            "/post/get/latest",
             "/api/v1/auth/authenticate",
             "/v2/api-docs",
             "/v3/api-docs",
@@ -47,7 +48,7 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(req ->
                         req.requestMatchers(WHITE_LIST_URL)
                                 .permitAll()
-                                .requestMatchers("/category/**" ,"/post/**").hasAnyRole(ADMIN.name(), MANAGER.name())
+                                .requestMatchers("/category/**" ,"/post/**" , "/user/**").hasAnyRole(ADMIN.name(), MANAGER.name())
                                  .requestMatchers(GET, "/api/v1/management/**").hasAnyAuthority(ADMIN_READ.name(), MANAGER_READ.name())
                                 .requestMatchers(POST, "/api/v1/management/**").hasAnyAuthority(ADMIN_CREATE.name(), MANAGER_CREATE.name())
                                 .requestMatchers(PUT, "/api/v1/management/**").hasAnyAuthority(ADMIN_UPDATE.name(), MANAGER_UPDATE.name())

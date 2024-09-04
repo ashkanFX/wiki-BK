@@ -16,5 +16,7 @@ public interface UserInterface {
 
     ProfileResponseDto getById(Integer id);
 
+    ProfileResponseDto getEmail(String email);
+
     User updateProfile(Integer id, ProfileRegisterUpdateDto profileRegisterUpdateDto);
 }

@@ -1,13 +1,13 @@
 package com.example.ptmedia.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.micrometer.common.lang.NonNull;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 @Entity
 @Data
@@ -18,6 +18,8 @@ public class Category {
     @GeneratedValue()
     Long id;
     @Column
+    @Size(min = 3, message = "at least need 3 char")
+    @NonNull
     String name;
 
     @ManyToMany(mappedBy = "categories")

@@ -49,9 +49,15 @@ public class PostController {
     public ResponseEntity<PostResponseDto> findById(@PathVariable long id) {
         return ResponseEntity.ok(this.postService.findById(id));
     }
+
+    @GetMapping("/get/latest")
+    public ResponseEntity<List<Post>> findById() {
+        return ResponseEntity.ok(this.postService.getLatest());
+    }
+
     @PutMapping("/update/{id}")
-    public ResponseEntity<Post> updatePost(@PathVariable long id , @RequestBody PostUpdateDto postUpdateDto) {
-        return ResponseEntity.ok(this.postService.updatePost(id , postUpdateDto));
+    public ResponseEntity<Post> updatePost(@PathVariable long id, @RequestBody PostUpdateDto postUpdateDto) {
+        return ResponseEntity.ok(this.postService.updatePost(id, postUpdateDto));
     }
 
 }

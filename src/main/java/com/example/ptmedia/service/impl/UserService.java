@@ -64,6 +64,17 @@ public class UserService implements UserInterface {
 
         return profileResponseDto;
     }
+    @Override
+    public ProfileResponseDto getEmail(String email) {
+
+        ProfileResponseDto profileResponseDto = new ProfileResponseDto();
+        this.userRepository.findByEmail(email).ifPresent(user -> {
+            profileResponseDto.setId(user.getId());
+            profileResponseDto.setName(user.getName());
+            profileResponseDto.setMobile(user.getMobile());
+        });
+        return profileResponseDto;
+    }
 
     @Override
     public User updateProfile(Integer id, ProfileRegisterUpdateDto profileRegisterUpdateDto) {

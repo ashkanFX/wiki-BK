@@ -41,7 +41,11 @@ public class UserController {
     @PutMapping("/update/{id}")
     public ResponseEntity<User> updateUser(@PathVariable Integer id, @RequestBody ProfileRegisterUpdateDto profileRegisterUpdateDto) {
         return ResponseEntity.ok(this.userService.updateProfile(id, profileRegisterUpdateDto));
+    }
 
+    @GetMapping("/get/email")
+    public ResponseEntity<ProfileResponseDto> updateUser(@RequestParam String email) {
+        return ResponseEntity.ok(this.userService.getEmail(email));
     }
 
 }

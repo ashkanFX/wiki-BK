@@ -8,6 +8,6 @@ import lombok.Data;
 public class CustomErrorResponse {
     private String errorMessage;
     private int statusCode;
-
+    private long timestamp;
     // Constructors, getters, and setters
 }

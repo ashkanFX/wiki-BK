@@ -3,6 +3,7 @@ package com.example.ptmedia.controller;
 import com.example.ptmedia.dto.Category.CategoryRequestDto;
 import com.example.ptmedia.dto.Category.CategoryResponseDto;
 import com.example.ptmedia.entity.Category;
+import com.example.ptmedia.exception.message.NotFoundException;
 import com.example.ptmedia.service.impl.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -33,7 +34,11 @@ public class CategoryController {
 
     @GetMapping("/getAll")
     public ResponseEntity<List<CategoryResponseDto>> addAllCategory() {
-        return ResponseEntity.ok(categoryService.findAllCategory());
+        try {
+            return ResponseEntity.ok(categoryService.findAllCategory());
+        } catch (Exception exception) {
+            throw new NotFoundException("can not find any category");
+        }
     }
 
     @ResponseStatus(value = HttpStatus.NO_CONTENT)

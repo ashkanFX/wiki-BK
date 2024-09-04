@@ -7,8 +7,12 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface PostRepository extends JpaRepository<Post , Long> {
+public interface PostRepository extends JpaRepository<Post, Long> {
      List<Post> findByUser_id(Integer id);
+
      @Query("SELECT p FROM Post p JOIN p.categories c WHERE c.id = :categoryId")
      List<Post> findPostsByCategoryId(@Param("categoryId") Long categoryId);
+
+     @Query("SELECT * from  Post Top 4" )
+     List<Post> getLatest();
 }
