@@ -13,6 +13,6 @@ public interface PostRepository extends JpaRepository<Post, Long> {
      @Query("SELECT p FROM Post p JOIN p.categories c WHERE c.id = :categoryId")
      List<Post> findPostsByCategoryId(@Param("categoryId") Long categoryId);
 
-     @Query("SELECT * from  Post Top 4" )
+     @Query(value = "SELECT * FROM Post ORDER BY created_at DESC LIMIT 4", nativeQuery = true)
      List<Post> getLatest();
 }
